@@ -76,8 +76,10 @@ return {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     keys = {
-      { "<leader>bm", "<Cmd>BufferLineMoveNext<CR>" },
-      { "<leader>bn", "<Cmd>BufferLineMovePrev<CR>" },
+      -- { "<leader>bm", "<Cmd>BufferLineMoveNext<CR>" },
+      -- { "<leader>bn", "<Cmd>BufferLineMovePrev<CR>" },
+      { "qh", "<Cmd>BufferLineMovePrev<CR>" },
+      { "ql", "<Cmd>BufferLineMoveNext<CR>" },
     },
 
     opts = {
