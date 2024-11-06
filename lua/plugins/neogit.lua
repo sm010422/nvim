@@ -9,5 +9,7 @@ return {
       "echasnovski/mini.pick", -- optional
     },
     config = true,
+
+    vim.keymap.set("n", "<leader>gN", ":Neogit<CR>", { noremap = true, silent = true, desc = "Neogit" }),
   },
 }
