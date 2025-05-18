@@ -1,6 +1,6 @@
 return {
   'nvim-java/nvim-java',
-  enabled = false, -- plus
+  enabled = false,
   config = false,
   dependencies = {
   {
@@ -10,10 +10,9 @@ return {
             jdtls = {
               handlers = {
                 ["language/status"] = function(_, _)
-                  -- 아무 동작도 하지 않음
                 end,
-                ['$/progress'] = function(_, result, ctx) 
 
+                ['$/progress'] = function(_, result, ctx) 
                 end,
               },
               capabilities = vim.lsp.protocol.make_client_capabilities(),
