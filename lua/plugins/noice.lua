@@ -22,6 +22,14 @@ return {
           },
           opts = { skip = true },
         },
+
+        {
+          filter = {
+            event = "notify",
+            find = "copilot is disabled",
+          },
+          opts = { skip = true },
+        },
       },
     },
   },
