@@ -30,6 +30,13 @@ return {
           },
           opts = { skip = true },
         },
+        {
+          filter = {
+            event = "notify",
+            find = "copilot is offline",
+          },
+          opts = { skip = true },
+        },
       },
     },
   },
