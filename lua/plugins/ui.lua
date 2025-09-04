@@ -71,26 +71,6 @@ return {
     end,
   },
 
-  -- buffer line
-  {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    keys = {
-      -- { "<leader>bm", "<Cmd>BufferLineMoveNext<CR>" },
-      -- { "<leader>bn", "<Cmd>BufferLineMovePrev<CR>" },
-      { "qh", "<Cmd>BufferLineMovePrev<CR>" },
-      { "ql", "<Cmd>BufferLineMoveNext<CR>" },
-    },
-
-    opts = {
-      options = {
-        indicator = {
-          style = "underline",
-        },
-      },
-    },
-  },
-
   -- filename
   {
     "b0o/incline.nvim",
