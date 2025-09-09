@@ -22,3 +22,11 @@ vim.keymap.set("n", "<leader>bA", function()
   vim.cmd("Copilot enable")
   vim.notify("Copilot Enabled", vim.log.levels.INFO)
 end, { desc = "Copilot Enable" })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "java",
+  callback = function(a)
+    local ok, wk = pcall(require, "which-key"); if not ok then return end
+    wk.add({ { "<leader>j", group = "Java New" } }, { mode = "n", buffer = a.buf })
+  end,
+})
