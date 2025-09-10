@@ -8,6 +8,7 @@ return {
         java_new = "<leader>jn",
       },
       options = {
+        use_notify = false,
         auto_open = true, -- Open file after creation
         java_version = 17, -- Minimum Java version
       },
