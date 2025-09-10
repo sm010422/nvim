@@ -2,26 +2,30 @@ return {
   {
     "folke/which-key.nvim",
     opts = function(_, opts)
-      -- 기존 icons 설정 보존
       opts.icons = opts.icons or {}
-      -- rules=false 방지 후 테이블 보장
       if opts.icons.rules == false then
         opts.icons.rules = {}
       end
       opts.icons.rules = opts.icons.rules or {}
+      opts.icons.mappings = (opts.icons.mappings ~= false)
 
-      -- ✅ 기존 Copilot 규칙 유지(대소문자 모두 매칭)
+      -- 기존 Copilot 규칙 유지
       table.insert(opts.icons.rules, {
         pattern = "[Cc]opilot",
         icon = LazyVim.config.icons.kinds.Copilot,
         color = "orange",
       })
 
-      -- ✅ Java 관련 desc/group에 devicons(Java) 아이콘 자동 부착
-      -- (mini.icons가 devicons를 mock하므로 그대로 동작)
+      -- Java (단어 경계로 Java만 매칭하고 싶으면 이 줄로, 아니면 [Jj]ava 그대로 두셔도 됩니다)
       table.insert(opts.icons.rules, {
-        pattern = "[Jj]ava",
+        pattern = "%f[%a][Jj]ava%f[^%a]", -- ← 'Java'만 매칭 (선택)
         icon = LazyVim.config.icons.kinds.Class,
+      })
+
+      -- Keywordprg / LSP Import
+      table.insert(opts.icons.rules, {
+        pattern = "[Kk]eywordprg",
+        icon = LazyVim.config.icons.kinds.Keyword,
       })
 
       return opts
