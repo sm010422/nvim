@@ -6,7 +6,7 @@ return {
       "sindrets/diffview.nvim", -- optional - Diff integration
 
       -- Only one of these is needed.
-      "echasnovski/mini.pick", -- optional
+      "nvim-mini/mini.pick", -- optional
     },
     config = true,
 
