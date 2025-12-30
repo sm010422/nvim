@@ -5,7 +5,7 @@
 vim.opt.relativenumber = false
 -- vim.opt.winbar = "%=%m %f"
 
-vim.opt.tabstop = 4       -- 실제 Tab 너비
-vim.opt.shiftwidth = 4    -- >> << 들여쓰기 너비
-vim.opt.softtabstop = 4   -- Insert 모드에서 Backspace 등 동작
+vim.opt.tabstop = 2       -- 실제 Tab 너비
+vim.opt.shiftwidth = 2    -- >> << 들여쓰기 너비
+vim.opt.softtabstop = 2   -- Insert 모드에서 Backspace 등 동작
 vim.opt.expandtab = true  -- Tab을 공백으로 변환
