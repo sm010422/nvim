@@ -90,10 +90,18 @@ return {
     },
 
   {
-    "nvim-cmp",
-    dependencies = { "hrsh7th/cmp-emoji" },
-    opts = function(_, opts)
-      table.insert(opts.sources, { name = "emoji" })
-    end,
-  },
+      "saghen/blink.cmp",
+      dependencies = { "moyiz/blink-emoji.nvim" },
+      opts = {
+        sources = {
+          providers = {
+            emoji = {
+              module = "blink-emoji",
+              name = "Emoji",
+              score_offset = 15,
+            },
+          },
+        },
+      },
+    },
 }
