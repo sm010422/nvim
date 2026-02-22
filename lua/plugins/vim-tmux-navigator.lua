@@ -1,5 +1,13 @@
 return {
   {
+    -- [vim-tmux-navigator]
+    -- Allows seamless navigation between Neovim splits and Tmux panes using Ctrl + hjkl.
+    -- 
+    -- 💡 Keybinding Conflict Issue (Terminal Clear Screen)
+    -- The default terminal 'clear' function won't work because <C-l> is overridden by 'Navigate Right'.
+    -- To use the clear screen feature, you need to add the following setting to Tmux:
+    -- 1. Add `bind C-l send-keys 'C-l'` to your ~/.tmux.conf
+    -- 2. To clear the terminal afterwards, press [Tmux Prefix] -> then [Ctrl + l]
     "christoomey/vim-tmux-navigator",
     cmd = {
       "TmuxNavigateLeft",
