@@ -1,19 +1,19 @@
 return {
   -- Create annotations with one keybind, and jump your cursor in the inserted annotation
   {
-      "danymat/neogen",
-      keys = {
-        {
-          -- 기존 "<leader>cc" 대신 안 겹치는 키로 변경
-          "<leader>cn",
-          function()
-            require("neogen").generate({})
-          end,
-          desc = "Neogen Comment",
-        },
+    "danymat/neogen",
+    keys = {
+      {
+        -- 기존 "<leader>cc" 대신 안 겹치는 키로 변경
+        "<leader>cn",
+        function()
+          require("neogen").generate({})
+        end,
+        desc = "Neogen Comment",
       },
-      opts = { snippet_engine = "nvim" },
     },
+    opts = { snippet_engine = "nvim" },
+  },
 
   -- Incremental rename
   {
@@ -78,17 +78,6 @@ return {
       })
     end,
   },
-
-  {
-      "hedyhli/outline.nvim",
-      keys = { { "<leader>cs", "<cmd>Outline<CR>", desc = "Toggle Outline" } },
-      cmd = { "Outline", "OutlineOpen" },
-      opts = {
-        outline_window = {
-          position = "right",
-        },
-      },
-    },
 
   {
       "saghen/blink.cmp",
