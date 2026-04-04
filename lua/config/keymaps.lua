@@ -27,3 +27,7 @@ vim.api.nvim_create_autocmd("FileType", {
     wk.add({ { "<leader>j", group = "Java New" } }, { mode = "n", buffer = a.buf })
   end,
 })
+
+vim.keymap.set("n", "<leader>gb", function()
+  require("git.blame").blame()
+end, { desc = "Git Blame" })
