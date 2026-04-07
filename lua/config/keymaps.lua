@@ -23,6 +23,13 @@ end, { desc = "Copilot Enable" })
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "java",
   callback = function(a)
+    vim.keymap.set("n", "<leader>jo", function()
+      local project = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+      local cache = vim.fn.expand("~/.cache/nvim/jdtls/") .. project
+      vim.fn.system("rm -rf " .. cache)
+      vim.notify("jdtls cache cleared: " .. project .. "\nPlease restart nvim", vim.log.levels.WARN)
+    end, { desc = "Clear jdtls cache (restart nvim required)", buffer = a.buf })
+
     local ok, wk = pcall(require, "which-key"); if not ok then return end
     wk.add({ { "<leader>j", group = "Java New" } }, { mode = "n", buffer = a.buf })
   end,
