@@ -39,10 +39,14 @@ vim.keymap.set("n", "<leader>gb", function()
   require("git.blame").blame()
 end, { desc = "Git Blame" })
 
-vim.keymap.set("n", "<leader>gd", function()
-  require("git.diff").open()
-end, { desc = "Git Diff Open" })
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.keymap.set("n", "<leader>gd", function()
+      require("git.diff").open()
+    end, { desc = "Git Diff Open" })
 
-vim.keymap.set("n", "<leader>gD", function()
-  require("git.diff").close()
-end, { desc = "Git Diff Close" })
+    vim.keymap.set("n", "<leader>gD", function()
+      require("git.diff").close()
+    end, { desc = "Git Diff Close" })
+  end,
+})
