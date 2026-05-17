@@ -3,7 +3,7 @@ return {
     "seblyng/roslyn.nvim",
     ft = "cs",
     opts = {
-      silent = true,
+      silent = false,
       filewatching = "off",
       extensions = {
         razor = { enabled = false },
@@ -22,6 +22,13 @@ return {
         },
       })
       require("roslyn").setup(opts)
+
+      -- info 레벨 가상 텍스트 숨기기
+      vim.diagnostic.config({
+        virtual_text = {
+          severity = { min = vim.diagnostic.severity.WARN },
+        },
+      })
     end,
   },
 }
