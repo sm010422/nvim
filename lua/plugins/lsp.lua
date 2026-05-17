@@ -13,6 +13,10 @@ return {
         "typescript-language-server",
         "css-lsp",
       })
+      opts.registries = {
+        "github:Crashdummyy/mason-registry",
+        "github:mason-org/mason-registry",
+      }
     end,
   },
 
