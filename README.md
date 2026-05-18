@@ -1,134 +1,110 @@
-# 💤 LazyVim
+# nvim
 
-* LazyVim BackUp File 
-
-# nvim/
+> Personal Neovim configuration based on [LazyVim](https://lazyvim.org)
 
 <a href="https://dotfyle.com/sm010422/nvim"><img src="https://dotfyle.com/sm010422/nvim/badges/plugins?style=flat" /></a>
 <a href="https://dotfyle.com/sm010422/nvim"><img src="https://dotfyle.com/sm010422/nvim/badges/leaderkey?style=flat" /></a>
 <a href="https://dotfyle.com/sm010422/nvim"><img src="https://dotfyle.com/sm010422/nvim/badges/plugin-manager?style=flat" /></a>
 
+---
 
-## Install Instructions
+## Requirements
 
- > Install requires Neovim 0.9+. Always review the code before installing a configuration.
+- Neovim >= 0.9
+- Git
+- [Nerd Font](https://www.nerdfonts.com/)
+- Node.js (for LSP servers)
+- ripgrep (for fzf/telescope)
 
-Clone the repository and install the plugins:
+## Install
+
+```sh
+git clone git@github.com:sm010422/nvim ~/.config/nvim
+nvim  # lazy.nvim will auto-install plugins on first launch
+```
+
+To run alongside another config:
 
 ```sh
 git clone git@github.com:sm010422/nvim ~/.config/sm010422/nvim
+NVIM_APPNAME=sm010422/nvim nvim
 ```
 
-Open Neovim with this config:
+---
 
-```sh
-NVIM_APPNAME=sm010422/nvim/ nvim
+## Colorscheme
+
+[tokyonight-night](https://github.com/folke/tokyonight.nvim) with a custom pitch-black background (`#0a0a0f`).
+
+---
+
+## Language Support
+
+| Language | LSP | Formatter | DAP |
+|---|---|---|---|
+| TypeScript / JavaScript | tsserver | prettier | — |
+| Java | jdtls (nvim-java) | — | nvim-dap |
+| Kotlin | kotlin_language_server | — | — |
+| C# | Roslyn | — | — |
+| C / C++ | clangd | — | — |
+| Python | pyright | — | — |
+| Tailwind CSS | tailwindcss-language-server | — | — |
+| CSS | cssls | — | — |
+| HTML | html | — | — |
+| SQL | — | — | — |
+| Markdown / JSON / YAML / TOML | — | prettier | — |
+
+---
+
+## Key Plugins
+
+### Editor
+- **[fzf-lua](https://github.com/ibhagwan/fzf-lua)** — fuzzy finder
+- **[harpoon2](https://github.com/ThePrimeagen/harpoon)** — file bookmarks
+- **[leap.nvim](https://github.com/ggandor/leap.nvim)** — fast cursor motion
+- **[mini-files](https://github.com/echasnovski/mini.files)** — file explorer
+- **[aerial.nvim](https://github.com/stevearc/aerial.nvim)** — code outline
+- **[refactoring.nvim](https://github.com/ThePrimeagen/refactoring.nvim)** — refactor operations
+- **[dial.nvim](https://github.com/monaqa/dial.nvim)** — enhanced increment/decrement
+
+### Git
+- **[neogit](https://github.com/NeogitOrg/neogit)** — Magit-style git UI
+- **[diffview.nvim](https://github.com/sindrets/diffview.nvim)** — diff viewer
+- **[git-conflict.nvim](https://github.com/akinsho/git-conflict.nvim)** — conflict resolver
+
+### LSP & Completion
+- **[nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)** + **[mason.nvim](https://github.com/mason-org/mason.nvim)**
+- **[inc-rename.nvim](https://github.com/smjonas/inc-rename.nvim)** — live rename preview
+- **[conform.nvim](https://github.com/stevearc/conform.nvim)** — formatter
+- **[noice.nvim](https://github.com/folke/noice.nvim)** — improved UI for messages & cmdline
+
+### AI
+- **Claude Code** (`lazyvim.plugins.extras.ai.claudecode`)
+- **GitHub Copilot** (`lazyvim.plugins.extras.ai.copilot`) — disabled by default in `init.lua`
+
+### UI
+- **[bufferline.nvim](https://github.com/akinsho/bufferline.nvim)** — tabline
+- **[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)** — statusline
+- **[snacks.nvim](https://github.com/folke/snacks.nvim)** — dashboard & utilities
+- **[nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar)** — scrollbar
+- **[mini.animate](https://github.com/echasnovski/mini.animate)** + **smear-cursor** — smooth animations
+- **[wakatime](https://github.com/wakatime/vim-wakatime)** — coding time tracking
+
+### Misc
+- **[vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)** — seamless pane navigation
+- **[nvim-visual-multi](https://github.com/mg979/vim-visual-multi)** — multiple cursors
+- **[nvim-surround](https://github.com/kylechui/nvim-surround)** — surround operations
+- **[tabout.nvim](https://github.com/abecodes/tabout.nvim)** — tab out of brackets
+
+---
+
+## Structure
+
 ```
-
-## Plugins
-
-### color
-
-+ [echasnovski/mini.hipatterns](https://dotfyle.com/plugins/echasnovski/mini.hipatterns)
-+ [NvChad/nvim-colorizer.lua](https://dotfyle.com/plugins/NvChad/nvim-colorizer.lua)
-### colorscheme
-
-+ [craftzdog/solarized-osaka.nvim](https://dotfyle.com/plugins/craftzdog/solarized-osaka.nvim)
-### comment
-
-+ [danymat/neogen](https://dotfyle.com/plugins/danymat/neogen)
-### completion
-
-+ [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
-### debugging
-
-+ [mfussenegger/nvim-dap](https://dotfyle.com/plugins/mfussenegger/nvim-dap)
-+ [rcarriga/nvim-dap-ui](https://dotfyle.com/plugins/rcarriga/nvim-dap-ui)
-### diagnostics
-
-+ [folke/trouble.nvim](https://dotfyle.com/plugins/folke/trouble.nvim)
-### editing-support
-
-+ [folke/snacks.nvim](https://dotfyle.com/plugins/folke/snacks.nvim)
-+ [folke/zen-mode.nvim](https://dotfyle.com/plugins/folke/zen-mode.nvim)
-+ [monaqa/dial.nvim](https://dotfyle.com/plugins/monaqa/dial.nvim)
-### formatting
-
-+ [stevearc/conform.nvim](https://dotfyle.com/plugins/stevearc/conform.nvim)
-### fuzzy-finder
-
-+ [echasnovski/mini.pick](https://dotfyle.com/plugins/echasnovski/mini.pick)
-+ [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
-### git
-
-+ [sindrets/diffview.nvim](https://dotfyle.com/plugins/sindrets/diffview.nvim)
-+ [akinsho/git-conflict.nvim](https://dotfyle.com/plugins/akinsho/git-conflict.nvim)
-+ [NeogitOrg/neogit](https://dotfyle.com/plugins/NeogitOrg/neogit)
-### icon
-
-+ [nvim-tree/nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
-### keybinding
-
-+ [folke/which-key.nvim](https://dotfyle.com/plugins/folke/which-key.nvim)
-### lsp
-
-+ [simrat39/symbols-outline.nvim](https://dotfyle.com/plugins/simrat39/symbols-outline.nvim)
-+ [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
-+ [jose-elias-alvarez/typescript.nvim](https://dotfyle.com/plugins/jose-elias-alvarez/typescript.nvim)
-+ [smjonas/inc-rename.nvim](https://dotfyle.com/plugins/smjonas/inc-rename.nvim)
-+ [stevanmilic/nvim-lspimport](https://dotfyle.com/plugins/stevanmilic/nvim-lspimport)
-### lsp-installer
-
-+ [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
-### lua-colorscheme
-
-+ [ellisonleao/gruvbox.nvim](https://dotfyle.com/plugins/ellisonleao/gruvbox.nvim)
-### motion
-
-+ [abecodes/tabout.nvim](https://dotfyle.com/plugins/abecodes/tabout.nvim)
-+ [folke/flash.nvim](https://dotfyle.com/plugins/folke/flash.nvim)
-+ [echasnovski/mini.bracketed](https://dotfyle.com/plugins/echasnovski/mini.bracketed)
-### nvim-dev
-
-+ [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
-### plugin-manager
-
-+ [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
-### preconfigured
-
-+ [LazyVim/LazyVim](https://dotfyle.com/plugins/LazyVim/LazyVim)
-### programming-languages-support
-
-+ [nvim-java/nvim-java](https://dotfyle.com/plugins/nvim-java/nvim-java)
-### scrollbar
-
-+ [petertriho/nvim-scrollbar](https://dotfyle.com/plugins/petertriho/nvim-scrollbar)
-### snippet
-
-+ [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
-### statusline
-
-+ [nvim-lualine/lualine.nvim](https://dotfyle.com/plugins/nvim-lualine/lualine.nvim)
-+ [b0o/incline.nvim](https://dotfyle.com/plugins/b0o/incline.nvim)
-### syntax
-
-+ [kylechui/nvim-surround](https://dotfyle.com/plugins/kylechui/nvim-surround)
-+ [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
-### tabline
-
-+ [akinsho/bufferline.nvim](https://dotfyle.com/plugins/akinsho/bufferline.nvim)
-### utility
-
-+ [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
-+ [echasnovski/mini.animate](https://dotfyle.com/plugins/echasnovski/mini.animate)
-+ [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
-### web-development
-
-+ [roobert/tailwindcss-colorizer-cmp.nvim](https://dotfyle.com/plugins/roobert/tailwindcss-colorizer-cmp.nvim)
-## Language Servers
-
-+ html
-+ jdtls
-
-
- This readme was generated by [Dotfyle](https://dotfyle.com)
+nvim/
+├── init.lua              # entry point
+├── lazyvim.json          # LazyVim extras
+├── lazy-lock.json        # plugin lockfile
+└── lua/
+    └── plugins/          # plugin overrides & custom configs
+```
