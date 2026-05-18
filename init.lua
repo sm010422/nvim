@@ -1,6 +1,8 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
+-- TODO: lazy.nvim 로드 직후라 Copilot 플러그인이 아직 로드되지 않아 효과 없을 수 있음.
+-- VimEnter autocmd 안으로 이동하거나 Copilot 플러그인 opts에 enabled = false 사용 권장.
 vim.cmd([[Copilot disable]])
 
 vim.api.nvim_create_autocmd("BufReadPre", {
@@ -8,8 +10,6 @@ vim.api.nvim_create_autocmd("BufReadPre", {
     vim.b.autoformat = false
   end,
 })
-
-vim.o.termguicolors = true
 
 local function sepfix()
   local hl = { fg = "#3b4261", bg = "NONE", bold = false }
