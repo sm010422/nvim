@@ -28,11 +28,14 @@ return {
     config = function(_, opts)
       require("roslyn").setup(opts)
 
-      -- info 레벨 가상 텍스트 숨기기
+      -- signs.text(LazyVim 아이콘)는 유지하고 severity 필터만 추가
+      local cfg = vim.diagnostic.config() or {}
+      local signs = type(cfg.signs) == "table" and vim.deepcopy(cfg.signs) or {}
+      signs.severity = { min = vim.diagnostic.severity.WARN }
       vim.diagnostic.config({
-        virtual_text = {
-          severity = { min = vim.diagnostic.severity.WARN },
-        },
+        virtual_text = { severity = { min = vim.diagnostic.severity.WARN } },
+        signs = signs,
+        underline = { severity = { min = vim.diagnostic.severity.WARN } },
       })
     end,
   },
