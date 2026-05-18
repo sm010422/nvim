@@ -23,10 +23,15 @@ return {
         build = "npm i && npm run compile vsDebugServerBundle && mv dist out",
       },
     },
+    -- TODO: `keys = { ... }` 는 Lua vararg expression으로 의도한 키맵이 아님.
+    -- 실제 사용할 키맵을 정의하거나 keys 항목 자체를 제거 필요.
+    -- 예: keys = { { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" } }
     keys = { ... },
     -- DAP Adater 설정
     config = function()
       require("dap-vscode-js").setup({
+        -- TODO: macOS + LazyVim 환경에 맞게 경로 수정 필요.
+        -- 권장: vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"
         debugger_path =         -- vscode-js-debug의 `절대 경로`. 꼭 직접 확인 후 설정해주셔야 합니다.
 "/home/{user}/.local/share/lunarvim/site/pack/lazy/opt/vscode-js-debug",
         -- 사용하고자 하는 어댑터.
