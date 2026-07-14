@@ -2,10 +2,42 @@ return {
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
-    keys = {
-      { "qh", "<Cmd>BufferLineMovePrev<CR>" },
-      { "ql", "<Cmd>BufferLineMoveNext<CR>" },
-    },
+    keys = function()
+      local keys = {
+        { "qh", "<Cmd>BufferLineMovePrev<CR>" },
+        { "ql", "<Cmd>BufferLineMoveNext<CR>" },
+        -- qh/ql로 바뀐 탭 순서와 어긋나지 않도록, bufferline이 보여주는 순서 그대로 이동
+        {
+          "<S-h>",
+          function()
+            require("bufferline").cycle(-1)
+          end,
+          desc = "Prev Buffer",
+        },
+        {
+          "<S-l>",
+          function()
+            require("bufferline").cycle(1)
+          end,
+          desc = "Next Buffer",
+        },
+      }
+      for i = 1, 9 do
+        table.insert(keys, {
+          "<leader>" .. i,
+          function()
+            local bufferline = require("bufferline")
+            -- 크롬 탭 단축키와 동일하게: 1~8은 해당 탭이 있을 때만 이동, 9는 항상 마지막 탭
+            if i < 9 and #bufferline.get_elements().elements < i then
+              return
+            end
+            bufferline.go_to(i, true)
+          end,
+          desc = "Go to buffer tab " .. i,
+        })
+      end
+      return keys
+    end,
     opts = {
       options = {
         indicator = { style = "underline" },
