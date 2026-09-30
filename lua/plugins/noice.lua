@@ -37,6 +37,13 @@ return {
           },
           opts = { skip = true },
         },
+        {
+          filter = {
+            event = "notify",
+            find = "Downloading Copilot server",
+          },
+          opts = { skip = true },
+        },
       },
     },
   },
