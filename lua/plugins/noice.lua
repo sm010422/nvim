@@ -22,6 +22,15 @@ return {
           },
           opts = { skip = true },
         },
+        -- pyright progress 무시
+        {
+          filter = {
+            event = "lsp",
+            kind = "progress",
+            find = "pyright",
+          },
+          opts = { skip = true },
+        },
 
         {
           filter = {

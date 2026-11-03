@@ -4,6 +4,8 @@ return {
     progress = {
       -- 1. 코드를 작성 중일 때(Insert mode)는 알림 띄우지 않음
       suppress_on_insert = true,
+      -- pyright 진행 알림 숨김
+      ignore = { "pyright" },
 
       display = {
         -- 2. 완료된 알림이 화면에 머무는 시간을 1초로 단축 (기본값 3초)
